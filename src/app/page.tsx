@@ -1,9 +1,12 @@
-import Image from "next/image";
+import { gridData } from "@/data/gridData";
+import GridOption from "@/components/GridOption";
 
 export default function Home() {
   return (
-    <main className="">
-     <h1>Walmart clone</h1>
+    <main className="flex ">
+     <div className="grid grid-cols-1 grid-flow-row-dense md:grid-cols-4 gap-5 m-5">
+      {gridData.map((item, i)=> {return (<GridOption key={i} title={item.title} className={item.className} image={item.image}/>)})}
+     </div>
     </main>
   );
 }
