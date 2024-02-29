@@ -7,9 +7,13 @@ import {
   User,
 } from "lucide-react";
 import Link from "next/link";
+import { useCartStore } from "../../store";
+import { getCartTotal } from "@/lib/getCartTotal";
 
 
 export default function HeaderLinks() {
+  const cart = useCartStore((state)=> state.cart);
+  const total = getCartTotal(cart);
   return (
     <div className="flex space-x-5 mt-5 md:mt-0">
         <Link href="/" className="hidden xl:flex text-white font-bold items-center space-x-2 text-sm">
@@ -37,10 +41,10 @@ export default function HeaderLinks() {
         <Link href="/basket" className="flex text-white font-bold items-center space-x-2 text-sm">
           <ShoppingCart size={20} />
           <div>
-            <p className="text-xs font-extralight">
-             No items
+          <p className="text-xs font-extralight">
+              {cart.length > 0 ? `${cart.length} items` : `No items`}
             </p>
-            <p>0.00</p>
+            <p>{cart.length > 0 ? `${total}` : "0"}</p>
           </div>
         </Link>
       </div>

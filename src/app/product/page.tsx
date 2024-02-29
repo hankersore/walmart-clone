@@ -17,6 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import AddToCart from "@/components/AddToCart";
 
 type Props = {
   searchParams: {
@@ -95,7 +96,7 @@ async function ProductPage({ searchParams: { url } }: Props) {
         <p className="text-2xl font-bold mt-2">
           {product?.currency} {product.price}
         </p>
-        {/* add to cart button */}
+        <AddToCart product={product}/>
         <hr />
         <h3 className="font-bold text-xl pt-10">Specifications</h3>
         <Table>
